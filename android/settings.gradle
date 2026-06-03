@@ -1,18 +1,11 @@
-pluginManagement {
-    repositories {
-        google()
-        mavenCentral()
-        gradlePluginPortal()
-    }
-}
-
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+buildscript {
     repositories {
         google()
         mavenCentral()
     }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.x.x' // أو أي نسخة لديك
+    }
 }
 
-rootProject.name = 'android'
-include ':app'
+// لا تضع أي repositories هنا في الأسفل!
