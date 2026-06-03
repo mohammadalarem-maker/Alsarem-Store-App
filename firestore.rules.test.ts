@@ -34,7 +34,7 @@ describe("Sahab ERP Security Rules", () => {
   });
 
   it("should allow admin to read everything", async () => {
-    const adminDb = testEnv.authenticatedContext("admin_uid", { email: "faremazen3@gmail.com", email_verified: true }).firestore();
+    const adminDb = testEnv.authenticatedContext("admin_uid", { email: "Mohammadalarem@gmail.com", email_verified: true }).firestore();
     await assertSucceeds(getDoc(doc(adminDb, "accounts/1")));
   });
 

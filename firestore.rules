@@ -32,7 +32,7 @@ service cloud.firestore {
     // Role helpers
     function isAdmin() {
       return isSignedIn() && (
-        (request.auth.token.email == 'faremazen3@gmail.com' && (request.auth.token.email_verified == true || !('email_verified' in request.auth.token))) ||
+        (request.auth.token.email == 'Mohammadalarem@gmail.com' && (request.auth.token.email_verified == true || !('email_verified' in request.auth.token))) ||
         (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin') ||
         exists(/databases/$(database)/documents/admins/$(request.auth.uid))
       );
@@ -177,12 +177,12 @@ service cloud.firestore {
         (
           incoming().role == 'sales' || 
           incoming().role == 'accountant' || 
-          (request.auth.token.email == 'faremazen3@gmail.com' && incoming().role == 'admin')
+          (request.auth.token.email == 'Mohammadalarem@gmail.com' && incoming().role == 'admin')
         )
       ); 
       allow update: if (
         isAdmin() || 
-        (isSignedIn() && request.auth.uid == userId && (request.auth.token.email == 'faremazen3@gmail.com' || existing().email.lower() == request.auth.token.email.lower() || existing().uid == request.auth.uid))
+        (isSignedIn() && request.auth.uid == userId && (request.auth.token.email == 'Mohammadalarem@gmail.com' || existing().email.lower() == request.auth.token.email.lower() || existing().uid == request.auth.uid))
       ) && isValidUser(incoming());
       allow delete: if isAdmin() || (isSignedIn() && (existing().email == request.auth.token.email || existing().uid == request.auth.uid));
     }
