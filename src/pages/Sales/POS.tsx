@@ -219,6 +219,18 @@ export default function POS() {
       }
     }
   }, [searchTerm, items]);
+  useEffect(() => {
+    const q = query(collection(db, "invoices"), orderBy("date", "desc"), limit(1));
+    const unsub = onSnapshot(q, (snapshot) => {
+      snapshot.docChanges().forEach((change) => {
+        if (change.type === "added") {
+          const inv = change.doc.data();
+          notify.success(`مبيعات جديدة: ${inv.total} ر.ي`);
+        }
+      });
+    });
+    return () => unsub();
+  }, []);
 
   const addToCart = (item: POSItem) => {
     if (item.stock <= 0) {
@@ -383,7 +395,7 @@ export default function POS() {
         customer: customerName,
         tax: invoiceResult.tax || 0
       });
-      notify.success('تم إتمام العملية بنجاح');
+      notify.success('تمت عملية بيع جديدة بقيمة ' + grandTotal + ' ر.ي');
       setCart([]);
       // Show success for 3 seconds, then reset
       setTimeout(() => setSuccess(false), 3000);
