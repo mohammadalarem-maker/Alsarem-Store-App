@@ -1,0 +1,13 @@
+cat << 'EOF' > firebase-applet-config.json
+{
+  "projectId": "alhussam-store-2ae68",
+  "appId": "1:450062176386:web:998d4234871c039b5f249b",
+  "apiKey": "AIzaSyA3lH5jPL0vgqHh3JWqI_cqRsFl2gYS_Sg",
+  "authDomain": "alhussam-store-2ae68.firebaseapp.com",
+  "firestoreDatabaseId": "(default)",
+  "storageBucket": "alhussam-store-2ae68.firebasestorage.app",
+  "messagingSenderId": "450062176386",
+  "measurementId": ""
+}
+EOF
+
