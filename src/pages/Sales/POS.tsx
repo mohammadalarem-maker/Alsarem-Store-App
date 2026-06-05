@@ -130,7 +130,7 @@ export default function POS() {
   ];
 
   useEffect(() => {
-    const unsubItems = onSnapshot(collection(db, 'accounts'), (snapshot) => {
+    const unsubItems = onSnapshot(collection(db, 'items'), (snapshot) => {
       const itemsData = snapshot.docs.map(doc => ({
         id: doc.id,
         ...doc.data()
